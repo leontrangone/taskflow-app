@@ -9,6 +9,6 @@ describe('isValidTaskTitle', () => {
     expect(isValidTaskTitle('   ')).toBe(false)
   })
   it('devuelve true para un título válido', () => {
-    expect(isValidTaskTitle('Comprar leche')).toBe(false)  // esto está mal a propósito
+    expect(isValidTaskTitle('Comprar leche')).toBe(true)
   })
 })
