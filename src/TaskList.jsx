@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
+import { isValidTaskTitle } from './utils'
 
 export default function TaskList({ session }) {
   const [tasks, setTasks] = useState([])
@@ -17,7 +18,7 @@ export default function TaskList({ session }) {
 
   const addTask = async (e) => {
     e.preventDefault()
-    if (!newTitle.trim()) return
+    if (!isValidTaskTitle(newTitle)) return
     await supabase.from('tasks').insert({
       title: newTitle,
       user_id: session.user.id,
